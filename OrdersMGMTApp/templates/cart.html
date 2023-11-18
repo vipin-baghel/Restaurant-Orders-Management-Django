@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load cart %}
+<!-- BODY -->
+
+<div class="container border rounded p-4 m-4">
+    <h3>Table {{ request.session.tbl }}</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Item</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+                <th scope="col">Amount</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in products %}
+            <tr>
+                <td></td>
+                <td>{{p.name}}</td>
+                <td>{{p|qty_in_cart:request.session}}</td>
+                <td>₹{{p.price}}</td>
+                <td>₹{{p|amt_product:request.session}}</td>
+                <td>
+                    <form action="/cart" method="post" >
+                        {% csrf_token %}
+                        <input hidden type="text" name="pid" value="{{p.id}}">
+                        <input hidden type="text" name="rem" value="True">
+                        <input type="submit" value="Remove" class="btn btn-primary">
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <th colspan="3"></th>
+                <th>Total amount</th>
+                <th>₹{{products|total_cart_amt:request.session}}</th>
+            </tr>
+        </tfoot>
+    </table>
+    
+    <!-- <form class="m-3 p-3 " action="/order_token" method="get">
+        <input type="submit" value="Generate Token" class="btn btn-primary col-lg-3 float-end" />
+    </form> -->
+    <form class="m-3 p-3 " action="/bill" method="get">
+        <input type="submit" value="Generate Bill" class="btn btn-primary col-lg-3 float-end" />
+    </form>
+    
+</div>
+
+{% endblock %}

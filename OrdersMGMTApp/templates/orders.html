@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load orders %}
+
+<!-- BODY -->
+<div class="container border rounded p-4 m-4">
+    <h1 class="p-2 text-center">All Orders</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Product</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Order Created Date</th>
+            <th scope="col">Cart UUID</th>
+            
+        </tr>
+        </thead>
+        <tbody>
+        {% for o in orders %}
+        <tr>
+            <td>{{o.item.name}}</td>
+            <td>{{o.quantity}}</td>
+            <td>₹{{o.item.price}}</td>
+            <td>₹{{o.quantity|amt_calc:o.item.price}}</td>
+            <td>{{o.datetime}}</td>
+            <td>{{o.cartuuid}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+
+{% endblock %}
+
+
+
+
