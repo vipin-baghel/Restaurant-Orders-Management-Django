@@ -23,8 +23,8 @@ Reports and Analytics: Generate reports and analyze order data for business insi
 
 **Env :-**
 Python 3.12.0 ||
-Postgres 16.1
-
+Postgres 16.1 ||
+Django 4.2
 
 
 
