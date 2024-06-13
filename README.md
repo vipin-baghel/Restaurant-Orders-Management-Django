@@ -31,5 +31,8 @@ Django 4.2
 
 Feel free to explore, use, and contribute to make this Restaurant Orders Management System even better!
 
+
 My Linkedin - https://www.linkedin.com/in/vipin-b-817a85137/
+
+
 Video demo - https://www.linkedin.com/posts/vipin-b-817a85137_restaurant-orders-management-system-django-activity-7132430444800749568-K9hi?utm_source=share&utm_medium=member_desktop
